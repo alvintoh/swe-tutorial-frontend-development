@@ -5,7 +5,11 @@
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
-  overflow-x: hidden;
+}
+
+main {
+  min-height: calc(100vh - 3.5rem - 8rem);
+  margin-top: 3.5rem;
 }
 
 .backdrop {
@@ -61,7 +65,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 1.5rem;
-  height: 1.5rem;
+  height: 2.5rem;
   /* width: 20px; */
   display: inline-block;
   vertical-align: middle;
@@ -119,6 +123,19 @@ body {
   color: #ff1b68;
   background: white;
   border: none;
+}
+
+@media (min-width: 40rem) {
+  .toggle-button {
+    display: none;
+  }
+
+  .main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 44px);
+    vertical-align: middle;
+  }
 }
 
 .main-footer {
