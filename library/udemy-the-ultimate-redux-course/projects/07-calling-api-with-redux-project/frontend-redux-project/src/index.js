@@ -1,5 +1,4 @@
 import store from "./store/configureStore";
-import { fetchTasks } from "./store/tasks";
 
 // const gettingTasks = async () => {
 //   try {
@@ -16,4 +15,11 @@ import { fetchTasks } from "./store/tasks";
 
 // gettingTasks();
 
-store.dispatch(fetchTasks());
+store.dispatch({
+  type: "apiRequest",
+  payload: {
+    url: "/tasks",
+    onSuccess: "tasks/getTasks",
+    onError: "SHOW_ERROR",
+  },
+});
