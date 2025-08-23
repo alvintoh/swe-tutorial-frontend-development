@@ -1,4 +1,10 @@
 import store from "./store/configureStore";
+import {
+  addNewTask,
+  deleteTask,
+  loadTasks,
+  updateCompleted,
+} from "./store/tasks";
 
 // const gettingTasks = async () => {
 //   try {
@@ -15,11 +21,7 @@ import store from "./store/configureStore";
 
 // gettingTasks();
 
-store.dispatch({
-  type: "apiRequest",
-  payload: {
-    url: "/tasks",
-    onSuccess: "tasks/getTasks",
-    onError: "SHOW_ERROR",
-  },
-});
+store.dispatch(loadTasks());
+store.dispatch(addNewTask({ task: "Complete This Exercise" }));
+store.dispatch(updateCompleted({ id: 6, completed: true }));
+store.dispatch(deleteTask({ id: 6 }));
