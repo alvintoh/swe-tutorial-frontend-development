@@ -1,33 +1,27 @@
-import { useContext, useEffect, useState } from "react";
-import StoreContext from "../context/storeContext";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loadTasks } from "../store/tasks";
 
 export const Tasks = () => {
-  const store = useContext(StoreContext);
-  const [tasks, setTasks] = useState([]);
-
+  const dispatch = useDispatch();
+  const { tasks, loading } = useSelector((state) => state.tasks);
   useEffect(() => {
-    store.dispatch(loadTasks());
-
-    const unsubscribe = store.subscribe(() => {
-      const storeTasks = store.getState().tasks.tasks;
-      if (storeTasks !== tasks) {
-        setTasks(storeTasks);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
+    dispatch(loadTasks());
   }, []);
 
   console.log(tasks);
   return (
-    <div>
-      {tasks.map((task) => (
-        <p key={task.id}>{task.task}</p>
-      ))}
-    </div>
+    <>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {tasks.map((task) => (
+            <p key={task.id}>{task.task}</p>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
