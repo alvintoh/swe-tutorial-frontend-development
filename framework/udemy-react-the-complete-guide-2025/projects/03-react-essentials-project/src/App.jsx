@@ -6,6 +6,11 @@ import { CORE_CONCEPTS } from "./data.js";
 let id = 0;
 
 function App() {
+  function handleSelect(selectedButton) {
+    // selectedButton => "components", "jsx", "props", "state"
+    console.log(selectedButton);
+  }
+
   return (
     <div>
       <Header />
@@ -26,11 +31,14 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={() => handleSelect("components")}>
+              Components
+            </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
+          Dynamic Content
         </section>
       </main>
     </div>
