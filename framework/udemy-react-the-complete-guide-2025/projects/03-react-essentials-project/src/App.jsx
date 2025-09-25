@@ -4,8 +4,6 @@ import Header from "./components/Header/Header.jsx";
 import TabButton from "./components/TabButton.jsx";
 import { CORE_CONCEPTS, EXAMPLES } from "./data.js";
 
-let id = 0;
-
 function App() {
   const [selectedTopic, setSelectedTopic] = useState("");
 
@@ -37,13 +35,8 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            {CORE_CONCEPTS.map((concept) => (
-              <CoreConcept
-                key={id++}
-                image={concept.image}
-                description={concept.description}
-                title={concept.title}
-              />
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept key={conceptItem.title} {...conceptItem} />
             ))}
           </ul>
         </section>
