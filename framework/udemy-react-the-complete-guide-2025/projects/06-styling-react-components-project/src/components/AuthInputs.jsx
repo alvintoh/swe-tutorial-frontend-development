@@ -36,19 +36,17 @@ export default function AuthInputs() {
       <ControlContainer>
         <Input
           label="Email"
-          $invalid={emailNotValid}
+          invalid={emailNotValid}
           type="email"
           // style={{
           //   backgroundColor: emailNotValid ? "#fed2d2" : "d1d5db",
           // }}
-          className={emailNotValid ? "invalid" : undefined}
           onChange={(event) => handleInputChange("email", event.target.value)}
         />
         <Input
           label="Password"
-          $invalid={passwordNotValid}
+          invalid={passwordNotValid}
           type="password"
-          className={passwordNotValid ? "invalid" : undefined}
           onChange={(event) =>
             handleInputChange("password", event.target.value)
           }
@@ -58,9 +56,7 @@ export default function AuthInputs() {
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <Button className="button" onClick={handleLogin}>
-          Sign In
-        </Button>
+        <Button onClick={handleLogin}>Sign In</Button>
       </div>
     </div>
   );
