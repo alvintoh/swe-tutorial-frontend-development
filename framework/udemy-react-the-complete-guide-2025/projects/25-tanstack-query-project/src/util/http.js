@@ -6,7 +6,6 @@ export async function fetchEvents({ signal, searchTerm } = {}) {
     url += "?search=" + searchTerm;
   }
   const response = await fetch(url, { signal });
-  console.log(response.json());
 
   if (!response.ok) {
     const error = new Error("An error occurred while fetching the events");
