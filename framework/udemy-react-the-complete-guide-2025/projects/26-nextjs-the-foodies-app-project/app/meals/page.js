@@ -5,7 +5,16 @@ import classes from "./page.module.css";
 
 import { getMeals } from "@/lib/meals";
 
+export const metadata = {
+  title: "All Meals",
+  description: "Browse the delicious meals shared by our vibrant community.",
+};
+
+// Force dynamic rendering - ensures fresh data after revalidation
+export const dynamic = "force-dynamic";
+
 async function Meals() {
+  console.log("Fetching meals");
   const meals = await getMeals();
 
   return <MealsGrid meals={meals} />;
