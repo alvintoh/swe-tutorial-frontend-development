@@ -2,13 +2,19 @@ import { motion } from "motion/react";
 import { createPortal } from "react-dom";
 
 export default function Modal({ title, children, onClose }) {
+  // const hiddenAnimationState = { opacity: 0, y: 30 };
   return createPortal(
     <>
       <div className="backdrop" onClick={onClose} />
       <motion.dialog
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 30 }}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: { opacity: 1, y: 0 },
+          exit: { opacity: 0, y: 30 },
+        }}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
         open
         className="modal"
       >
